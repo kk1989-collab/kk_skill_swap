@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Sent Requests</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>My Sent Skill Requests</h1>
+
+    {% if requests %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Skill Name</th>
+            <th>Skill id</th>
+            <th>Requested To (User)</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+
+
+        {% for request in requests %}
+        <tr>
+            <td>{{ request[1] }}</td> <!-- Skill Name -->
+            <td>{{ request[0] }}</td> <!-- Skill Name -->
+            <td>{{ request[2] }}</td> <!-- Receiver Name -->
+            <td>{{ request[3] }}</td> <!-- Status (Pending/Accepted/Rejected) -->
+            <td>
+    {% if request[3] == 'approved' and not request[4] %}
+    <a href="{{ url_for('chat', request_id=request[0]) }}">Chat</a>
+    <form action="{{ url_for('mark_complete', request_id=request[0]) }}" method="POST" style="display:inline;">
+        <button type="submit">Mark as Completed</button>
+    </form>
+        {% elif request[4] %}
+    <span style="color: green;">Completed</span>
+    <a href="{{ url_for('leave_review', request_id=request[0]) }}">Leave Review</a>
+        {% else %}
+    <button disabled>Chat</button>
+        {% endif %}
+
+</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No requests sent yet!</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

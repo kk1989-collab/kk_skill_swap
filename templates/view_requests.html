@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>Received Requests</h1>
+
+    {% if requests %}
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Skill Name</th>
+                <th>request id</th>
+                <th>Request Sent By</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Chat</th>
+            </tr>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request[1] }}</td>
+                <td>{{ request[0] }}</td>
+                <td>{{ request[2] }}</td>
+                <td>{{ request[3] }}</td>
+                <td>
+                    {% if request[3] == 'pending' %}
+                    <a href="{{ url_for('approve_request', request_id=request[0]) }}">Approve</a>
+                    <a href="{{ url_for('reject_request', request_id=request[0]) }}">Reject</a>
+                    {% else %}
+                    <span>Already {{ request[3] }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                {% if request[3] == 'approved' %}
+                    <a href="{{ url_for('chat', request_id=request[0]) }}">Chat</a>
+                {% else %}
+                    <button disabled>Chat</button>
+                {% endif %}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No requests received.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

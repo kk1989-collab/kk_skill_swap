@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h2>Posted Skills</h2>
+    <h1>Welcome, {{ username }}!</h1>
+    {% if skills %}
+        <ul>
+            {% for skill in skills %}
+                <li>
+                    <strong>{{ skill[3] }}</strong>: {{ skill[2] }} (Posted by: {{username}})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No skills posted yet.</p>
+    {% endif %}<h2>Your Skills</h2>
+<table border="1">
+    <tr>
+        <th>Skill Name</th>
+        <th>Description</th>
+    </tr>
+    {% for skill in skills %}
+    <tr>
+        <td>{{ skill[2] }}</td>
+        <td>{{ skill[3] }}</td>
+          <td>
+           <a href="{{ url_for('edit_skill', skill_id=skill[0]) }}">Edit</a>
+            <a href="{{ url_for('delete_skill', skill_id=skill[0]) }}" onclick="return confirm('Are you sure you want to delete this skill?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

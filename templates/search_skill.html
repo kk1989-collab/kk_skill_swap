@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Skill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>Search Skills</h1>
+
+    <form action="/search-skill" method="POST">
+        <label for="search">Enter Skill Name:</label>
+        <input type="text" id="search" name="search" placeholder="e.g., Python, JavaScript" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Skill Name</th>
+            <th>Description</th>
+            <th>Posted By</th>
+            <th>skill id</th>
+            <th>Action</th>
+        </tr>
+        {% for skill in skills %}
+            {% if skill[1] != logged_in_user_id %}
+                <!-- Show request button only if the skill is not posted by the logged-in user -->
+                <tr>
+                    <td>{{ skill[1] }}</td>
+                    <td>{{ skill[2] }}</td>
+                    <td>{{ skill[3] }}</td> <!-- Display the name of the user who posted the skill -->
+                    <td>{{ skill[0] }}</td> <!-- Display the skill id -->
+                    <td>
+                    {% if skill[0] in sent_requests %}
+                         <button disabled>Request Sent</button>
+                    {% else %}
+                         <form action="{{ url_for('send_request', skill_id=skill[0]) }}" method="POST">
+                         <button type="submit">Send Request</button>
+                    </form>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <!-- No request button for the skill posted by the logged-in user -->
+                <tr>
+                    <td>{{ skill[1] }}</td>
+                    <td>{{ skill[2] }}</td>
+                    <td>{{ skill[3] }}</td> <!-- Display the name of the user who posted the skill -->
+                    <td><button disabled>Request Sent</button></td>
+                </tr>
+            {% endif %}
+        {% else %}
+            <p>No skills found.</p>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

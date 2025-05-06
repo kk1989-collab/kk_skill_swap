@@ -1,0 +1,161 @@
+/* General reset and base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    background-color: darkorange;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #1c1c1c;    /*color of labels   near to black*/
+}
+
+/* Header with green navigation */
+header {
+    background-color: green;
+    justify-content: top;
+    align-items: top;
+    color: white;
+    padding: 15px 0;
+    border-bottom: 4px solid #004d00;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;    /*This gap is for the gap between menu bar on the top*/
+}
+
+nav a {
+    color: black;    /*menu color*/
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #006600;  /* this is hover of menu, means color when hovwr mouse to that menu, green color*/
+}
+
+/* Main section with form and content centering */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #fff3e0;
+    border-top: 5px solid #cc5200;
+    border-bottom: 5px solid #ff8000;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    color: #333;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh; /* Enough space to center within page */
+}
+
+
+/* Form styling, this define the color of area in middle for taking inputs or displaying something in the page */
+form {
+    background-color: #fffff0;   /* Ivory color*/
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+    max-width: 500px;
+}
+
+input, textarea, select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+/* Blue buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Chat messages layout */
+.chat-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.message {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Table layout */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+th, td {
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #ffa64d;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+    color: #fff;
+    border-top: 4px solid #cc5200;
+}

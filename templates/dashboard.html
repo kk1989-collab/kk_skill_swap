@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+
+    <nav>
+        <a href="/post-skill">Post a Skill</a> |
+        <a href="/skill-list">My Skills</a> |
+        <a href="/profile">My Profile</a> |
+        <a href="/my-requests">My Requests</a> |
+        <a href="/my-given-reviews">My Given Reviews</a> |
+        <a href="/my-received-reviews">My Received Reviews</a> |
+        <a href="/search-skill">Search Skill</a> |
+        <a href="/view-requests">Requests for Approve/Reject</a> |
+         <button onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+
+    </nav>
+
+    <p>This is your personal dashboard.</p>
+</body>
+</html>

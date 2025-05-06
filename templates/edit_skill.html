@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+       <title>Title</title>
+</head>
+
+<h2>Edit Skill</h2>
+<form method="POST">
+    <label>Skill Name:</label>
+    <input type="text" name="skill_name" value="{{ skill[0] }}" required><br><br>
+    <label>Description:</label>
+    <textarea name="description" required>{{ skill[1] }}</textarea><br><br>
+    <button type="submit">Update Skill</button>
+</form>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+<body>
+
+</body>
+</html>

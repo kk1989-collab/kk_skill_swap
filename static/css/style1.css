@@ -1,0 +1,29 @@
+.chat-box {
+    border: 1px solid #ccc;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.message p {
+    margin: 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Skill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h2>Post Your Skill</h2>
+    <form action="{{ url_for('post_skill') }}" method="POST">
+        <label for="skill_name">Skill Name:</label><br>
+        <input type="text" id="skill_name" name="skill_name" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Post Skill">
+    </form>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   </head>
+<body>
+    <h1>Chat for Skill Request</h1>
+
+    <div class="chat-box">
+        {% for message in messages %}
+            <div class="message">
+                <p><strong>{{ message[4] }}:</strong> {{ message[1] }}</p>
+                <small>{{ message[3] }}</small>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form action="{{ url_for('chat', request_id=request_id) }}" method="POST">
+        <textarea name="message" placeholder="Type your message..." required></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

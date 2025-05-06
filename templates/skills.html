@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h2>Posted Skills</h2>
+    <h1>Welcome, {{ username }}!</h1>
+    {% if skills %}
+        <ul>
+            {% for skill in skills %}
+                <li>
+                    <strong>{{ skill[1] }}</strong>: {{ skill[2] }} (Posted by: {{skill[3]}})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No skills posted yet.</p>
+    {% endif %}<h2>Your Skills</h2>
+<table border="1">
+    <tr>
+        <th>Skill Name</th>
+        <th>Description</th>
+        <th>Posted by</th>
+    </tr>
+    {% for skill in skills %}
+    <tr>
+        <td>{{ skill[1] }}</td>
+        <td>{{ skill[2] }}</td>
+        <td>{{ skill[3] }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+<form method="GET" action="{{ url_for('skill_list') }}">
+    <input type="text" name="search" placeholder="Search by skill name" value="{{ request.args.get('search', '') }}">
+    <button type="submit">Search</button>
+</form>
+
+</body>
+</html>
