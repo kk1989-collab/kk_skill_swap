@@ -13,7 +13,6 @@ seaborn==0.13.2
 pyttsx3==2.98
 pytube==15.0.0
 SpeechRecognition==3.14.1
-PyAudio==0.2.14
 # Commented unnecessary or dev packages
 # auto-py-to-exe==2.45.1
 # jupyter==1.1.1
