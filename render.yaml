@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: kk_skill
+    envVars:
+      - key: python_version
+        value: 3.11
+    buildFilter:
+      buildCommand: "pip install -r requirements.txt"
+      startCommand: "gunicorn app:app"
+    repo: https://github.com/kk1989-collab/kk_skill_swap
+    branch: master
