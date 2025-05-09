@@ -58,7 +58,6 @@ hyperframe==6.1.0
 idna==3.10
 imageio==2.37.0
 imageio-ffmpeg==0.6.0
-imghdr-lts==1.0.0
 iniconfig==2.0.0
 instabot==0.117.0
 ipykernel==6.29.5
