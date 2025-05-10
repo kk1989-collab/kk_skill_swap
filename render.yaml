@@ -1,8 +1,9 @@
+startCommand: "gunicorn app:app"
 services:
   - type: web
     name: kk_skill
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    # This should run your app with Gunicorn
     envVars:
       - key: python_version
         value: 3.11
